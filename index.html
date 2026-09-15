@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitflow — Daily Habit Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1 class="brand-name">Habitflow</h1>
+      </div>
+      <div class="week-nav">
+        <button class="nav-btn" id="prevWeek" aria-label="Previous week">&#8592;</button>
+        <span class="week-label" id="weekLabel"></span>
+        <button class="nav-btn" id="nextWeek" aria-label="Next week">&#8594;</button>
+        <button class="today-btn" id="todayBtn" aria-label="Go to current week">Today</button>
+      </div>
+    </header>
+
+    <!-- Add Habit -->
+    <section class="add-section" aria-label="Add a new habit">
+      <div class="add-bar">
+        <input
+          type="text"
+          id="habitInput"
+          class="habit-input"
+          placeholder="Name a new habit… e.g. Read 30 min"
+          maxlength="60"
+          aria-label="New habit name"
+        />
+        <button class="add-btn" id="addHabitBtn" aria-label="Add habit">
+          <span>+ Add</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <main class="grid-section" id="gridSection" aria-label="Habit tracker grid">
+
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState" aria-live="polite">
+        <div class="empty-icon">&#9678;</div>
+        <p class="empty-title">No habits yet.</p>
+        <p class="empty-sub">Type a habit above and hit <strong>+ Add</strong> to begin tracking.</p>
+      </div>
+
+      <!-- Grid table -->
+      <div class="grid-wrapper" id="gridWrapper" style="display:none">
+        <table class="habit-grid" role="grid" aria-label="Weekly habit grid">
+          <thead>
+            <tr id="gridHeader">
+              <th class="habit-col-head" scope="col">Habit</th>
+            </tr>
+          </thead>
+          <tbody id="gridBody"></tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Rename modal — hidden by default via style -->
+  <div class="modal-backdrop" id="modalBackdrop" style="display:none" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal">
+      <h2 class="modal-title" id="modalTitle">Rename Habit</h2>
+      <input type="text" id="renameInput" class="habit-input" maxlength="60" aria-label="New habit name" />
+      <div class="modal-actions">
+        <button class="modal-cancel" id="modalCancel">Cancel</button>
+        <button class="add-btn" id="modalSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
